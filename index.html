@@ -64,6 +64,8 @@
         .screen {
             display: none;
             padding: 40px;
+            max-height: 80vh;
+            overflow-y: auto;
         }
         
         .screen.active {
@@ -289,6 +291,16 @@
             color: #667eea;
         }
         
+        .day-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #667eea;
+        }
+        
         .day-tab.completed::before {
             content: '✓';
             margin-right: 8px;
@@ -387,6 +399,7 @@
             margin-bottom: 30px;
             overflow: hidden;
             border: 2px solid #e1e8ed;
+            transition: all 0.3s ease;
         }
         
         .meal-section.active {
@@ -406,6 +419,36 @@
         
         .meal-info {
             flex: 1;
+        }
+        
+        .meal-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .remove-meal {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .remove-meal:hover {
+            background: #ff6b6b;
+        }
+        
+        .expand-arrow {
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .meal-section.collapsed .expand-arrow {
+            transform: rotate(-90deg);
         }
         
         .meal-content {
@@ -438,6 +481,96 @@
             border-color: #667eea;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
+        }
+        
+        .menu-customization {
+            background: #f8f9ff;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .menu-customization.visible {
+            display: block;
+        }
+        
+        .course-section {
+            margin-bottom: 25px;
+        }
+        
+        .course-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        
+        .course-title {
+            font-weight: 600;
+            color: #667eea;
+            font-size: 16px;
+        }
+        
+        .choice-input {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+        }
+        
+        .choice-input input {
+            width: 50px;
+            padding: 5px 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-align: center;
+        }
+        
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: white;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        
+        .menu-item input[type="checkbox"] {
+            margin: 0;
+        }
+        
+        .item-name {
+            flex: 1;
+        }
+        
+        .item-price {
+            font-size: 12px;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .add-ons-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e8ed;
+        }
+        
+        .section-label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         /* Step 4 Styles - Review */
@@ -596,6 +729,10 @@
                 grid-template-columns: 1fr;
             }
             
+            .menu-items {
+                grid-template-columns: 1fr;
+            }
+            
             .screen {
                 padding: 25px;
             }
@@ -712,16 +849,16 @@
         
         <!-- Step 2: Meal Selection -->
         <div class="screen" id="step2Screen">
-            <div class="day-tabs">
+            <div class="day-tabs" id="dayTabsContainer">
                 <button class="day-tab active" id="dayTab1">Day 1 - Date TBD</button>
             </div>
             
             <div style="background: #f8f9ff; padding: 20px; border-radius: 12px; margin-bottom: 30px;">
-                <h3 style="color: #667eea; margin-bottom: 5px;">Day 1 Configuration</h3>
+                <h3 style="color: #667eea; margin-bottom: 5px;" id="dayConfigTitle">Day 1 Configuration</h3>
                 <p style="color: #666; font-size: 14px;">Select which meal times you'd like to offer for this day.</p>
             </div>
             
-            <h2 style="font-size: 1.8em; color: #333; margin-bottom: 20px; text-align: center;">Choose Meal Times for Day 1</h2>
+            <h2 style="font-size: 1.8em; color: #333; margin-bottom: 20px; text-align: center;" id="mealSelectionTitle">Choose Meal Times for Day 1</h2>
             
             <div class="meal-grid">
                 <div class="meal-card" onclick="toggleMeal('breakfast')">
@@ -782,6 +919,10 @@
         
         <!-- Step 3: Service Configuration -->
         <div class="screen" id="step3Screen">
+            <div class="day-tabs" id="configDayTabs">
+                <button class="day-tab active">Day 1 - Date TBD</button>
+            </div>
+            
             <div style="background: #f8f9ff; padding: 20px; border-radius: 12px; margin-bottom: 30px;">
                 <h3 style="color: #667eea; margin-bottom: 5px;">Service Style Configuration</h3>
                 <p style="color: #666; font-size: 14px;">Configure service styles and menu options for each selected meal time.</p>
@@ -876,10 +1017,162 @@
         let selectedMeals = [];
         let dateCount = 1;
         let clientData = {};
+        let currentDay = 1;
+        let dayConfigurations = {};
         
         const validCodes = ['4250', '4271', '4272', '4273', '4274', '4275', '4276', '4277', '4278'];
         const stepTitles = ['Access Required', 'Step 1: Client & Event Information', 'Step 2: Select Meal Times', 'Step 3: Configure Service Styles', 'Step 4: Review & Generate Link'];
         const progressWidths = [0, 25, 50, 75, 100];
+        
+        // Complete menu data
+        const menuData = {
+            lunch: {
+                'Plated Lunch': {
+                    courses: [
+                        {
+                            name: 'Side Salads',
+                            priceRange: '$7-$9',
+                            defaultChoices: 1,
+                            items: [
+                                { name: 'Seasonal Salad', price: '$7' },
+                                { name: 'Classic Caesar', price: '$8' },
+                                { name: 'Spinach Salad', price: '$8' },
+                                { name: 'BLT Wedge', price: '$8' },
+                                { name: 'Baby Kale (VG)', price: '$9' },
+                                { name: 'Local Caprese', price: '$8' }
+                            ]
+                        },
+                        {
+                            name: 'Entrée Salads & Plated Entrées',
+                            priceRange: '$16-$42',
+                            defaultChoices: 2,
+                            items: [
+                                { name: 'Classic Caesar Salad', price: '$16' },
+                                { name: 'Baby Kale Salad', price: '$18' },
+                                { name: 'Roasted Chicken Quarters', price: '$26' },
+                                { name: 'Roasted Chicken Breast', price: '$28' },
+                                { name: 'Grilled Pork Chop', price: '$28' },
+                                { name: 'Wood-Grilled Salmon', price: '$34' },
+                                { name: '6OZ Beef Tenderloin', price: '$36' },
+                                { name: 'New York Strip', price: '$42', checked: false }
+                            ]
+                        }
+                    ],
+                    addOns: [
+                        { name: 'Herb Grilled Chicken', price: '+$8' },
+                        { name: 'Wood Grilled Salmon', price: '+$10' },
+                        { name: 'Grilled Shrimp', price: '+$10' },
+                        { name: '6OZ Filet', price: '+$15' }
+                    ]
+                }
+            },
+            dinner: {
+                'Canapés': {
+                    courses: [
+                        {
+                            name: 'Golden Hour',
+                            priceRange: '$4-$7',
+                            defaultChoices: 3,
+                            items: [
+                                { name: 'Deviled Eggs', price: '$4' },
+                                { name: 'Bacon Wrapped Scallops', price: '$7' },
+                                { name: 'Stuffed Mushrooms', price: '$5' },
+                                { name: 'Mini Crab Cakes', price: '$6' },
+                                { name: 'Prosciutto Wrapped Figs', price: '$6' }
+                            ]
+                        },
+                        {
+                            name: 'After Dark',
+                            priceRange: '$6-$12',
+                            defaultChoices: 2,
+                            items: [
+                                { name: 'Beef Tenderloin Crostini', price: '$12' },
+                                { name: 'Lobster Salad Spoons', price: '$10' },
+                                { name: 'Duck Confit Spring Rolls', price: '$9' },
+                                { name: 'Tuna Tartare', price: '$11' },
+                                { name: 'Foie Gras Mousse', price: '$12' }
+                            ]
+                        }
+                    ]
+                },
+                'Reception': {
+                    courses: [
+                        {
+                            name: 'Stationary Displays',
+                            priceRange: '$8-$18',
+                            defaultChoices: 2,
+                            items: [
+                                { name: 'Artisan Charcuterie', price: '$18' },
+                                { name: 'Seasonal Crudité', price: '$12' },
+                                { name: 'Cheese & Fruit Display', price: '$16' },
+                                { name: 'Smoked Salmon Bar', price: '$18' },
+                                { name: 'Mediterranean Mezze', price: '$14' }
+                            ]
+                        }
+                    ]
+                },
+                'Plated Dinner': {
+                    courses: [
+                        {
+                            name: 'Starters',
+                            priceRange: '$9-$18',
+                            defaultChoices: 2,
+                            items: [
+                                { name: 'Classic Caesar', price: '$9' },
+                                { name: 'Heirloom Caprese', price: '$9' },
+                                { name: 'Baby Arugula', price: '$9' },
+                                { name: 'Golden Beet', price: '$10' },
+                                { name: 'Lobster & Avocado', price: '$18' },
+                                { name: 'Frisee Salad', price: '$12' }
+                            ]
+                        },
+                        {
+                            name: 'Entrées',
+                            priceRange: '$30-$55',
+                            defaultChoices: 2,
+                            items: [
+                                { name: 'Herb Roasted Chicken Breast', price: '$30' },
+                                { name: 'Pan Seared Salmon', price: '$36' },
+                                { name: 'Filet Mignon', price: '$55' },
+                                { name: 'Seared Halibut', price: '$36' },
+                                { name: 'Braised Short Rib', price: '$42' },
+                                { name: 'Butter Poached Lobster Tail', price: 'MKT' }
+                            ]
+                        }
+                    ]
+                }
+            },
+            drinks: {
+                'Spirited Packages': {
+                    courses: [
+                        {
+                            name: 'Package Selection',
+                            priceRange: '$22-$42',
+                            defaultChoices: 1,
+                            items: [
+                                { name: 'Brunch Package (2hr)', price: '$22' },
+                                { name: 'Quartz Package (2hr)', price: '$28' },
+                                { name: 'Jasper Package (2hr)', price: '$34' },
+                                { name: 'Diamond Package (2hr)', price: '$42' }
+                            ]
+                        }
+                    ]
+                },
+                'Hops & Vine': {
+                    courses: [
+                        {
+                            name: 'Beer & Wine Packages',
+                            priceRange: '$22-$26',
+                            defaultChoices: 1,
+                            items: [
+                                { name: 'The Compton Beer & Wine (2hr)', price: '$22' },
+                                { name: 'Premium Beer & Wine (2hr)', price: '$26' }
+                            ]
+                        }
+                    ]
+                }
+            }
+        };
         
         // Password Check
         function checkPassword() {
@@ -932,12 +1225,8 @@
                     eventDates: Array.from(document.querySelectorAll('input[name="eventDate"]')).map(input => input.value)
                 };
                 
-                // Update day tab with first date
-                if (clientData.eventDates[0]) {
-                    const date = new Date(clientData.eventDates[0]);
-                    const options = { weekday: 'long', month: 'short', day: 'numeric' };
-                    document.getElementById('dayTab1').textContent = `Day 1 - ${date.toLocaleDateString('en-US', options)}`;
-                }
+                // Generate day tabs for multi-day events
+                generateDayTabs();
             }
             
             showScreen('step2Screen', 2);
@@ -951,6 +1240,64 @@
         function goToStep4() {
             populateReview();
             showScreen('step4Screen', 4);
+        }
+        
+        // Generate day tabs for multi-day events
+        function generateDayTabs() {
+            if (clientData.eventDates.length <= 1) return;
+            
+            const tabContainer = document.getElementById('dayTabsContainer');
+            tabContainer.innerHTML = '';
+            
+            clientData.eventDates.forEach((dateStr, index) => {
+                const date = new Date(dateStr);
+                const options = { weekday: 'long', month: 'short', day: 'numeric' };
+                const formattedDate = date.toLocaleDateString('en-US', options);
+                
+                const tab = document.createElement('button');
+                tab.className = `day-tab ${index === 0 ? 'active' : ''}`;
+                tab.textContent = `Day ${index + 1} - ${formattedDate}`;
+                tab.onclick = () => switchToDay(index + 1);
+                
+                tabContainer.appendChild(tab);
+            });
+            
+            // Update first tab
+            if (clientData.eventDates[0]) {
+                const date = new Date(clientData.eventDates[0]);
+                const options = { weekday: 'long', month: 'short', day: 'numeric' };
+                document.getElementById('dayTab1').textContent = `Day 1 - ${date.toLocaleDateString('en-US', options)}`;
+            }
+        }
+        
+        function switchToDay(dayNumber) {
+            // Save current day selections
+            dayConfigurations[currentDay] = [...selectedMeals];
+            
+            // Switch to new day
+            currentDay = dayNumber;
+            selectedMeals = dayConfigurations[dayNumber] || [];
+            
+            // Update UI
+            document.querySelectorAll('.day-tab').forEach((tab, index) => {
+                tab.classList.toggle('active', index + 1 === dayNumber);
+            });
+            
+            document.getElementById('dayConfigTitle').textContent = `Day ${dayNumber} Configuration`;
+            document.getElementById('mealSelectionTitle').textContent = `Choose Meal Times for Day ${dayNumber}`;
+            
+            // Update meal cards
+            document.querySelectorAll('.meal-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            selectedMeals.forEach(mealType => {
+                const card = document.querySelector(`.meal-card[onclick="toggleMeal('${mealType}')"]`);
+                if (card) card.classList.add('selected');
+            });
+            
+            updateMealSummary();
+            updateStep2Button();
         }
         
         // Step 1: Date Management
@@ -1057,10 +1404,14 @@
                             <div style="font-size: 1.4em; font-weight: 600; margin-bottom: 4px;">${config.title}</div>
                             <div style="opacity: 0.8; font-size: 14px;">Configure ${config.title.toLowerCase()} service options</div>
                         </div>
+                        <div class="meal-actions">
+                            <button class="remove-meal" onclick="removeMealFromConfig('${meal}')">Remove</button>
+                            <div class="expand-arrow" onclick="toggleConfigSection('${meal}')">▼</div>
+                        </div>
                     </div>
                     
                     <div class="meal-content">
-                        <div style="font-weight: 600; color: #333; margin-bottom: 15px; font-size: 16px;">Choose Service Style</div>
+                        <div class="section-label">Choose Service Style</div>
                         <div class="style-grid">
                             ${config.styles.map(style => `
                                 <div class="style-option" onclick="selectStyle('${meal}', '${style}', this)">
@@ -1069,6 +1420,7 @@
                                 </div>
                             `).join('')}
                         </div>
+                        <div class="menu-customization" id="${meal}-menu"></div>
                     </div>
                 `;
                 
@@ -1083,13 +1435,85 @@
         function toggleConfigSection(mealId) {
             const sections = document.querySelectorAll('.meal-section');
             sections.forEach(s => s.classList.remove('active'));
-            event.currentTarget.closest('.meal-section').classList.add('active');
+            
+            const clickedSection = event.currentTarget.closest('.meal-section');
+            if (clickedSection.classList.contains('collapsed')) {
+                clickedSection.classList.remove('collapsed');
+            }
+            clickedSection.classList.add('active');
+        }
+        
+        function removeMealFromConfig(mealType) {
+            if (confirm(`Remove ${mealType} from this day? This will delete all configuration.`)) {
+                selectedMeals = selectedMeals.filter(meal => meal !== mealType);
+                generateConfigSections();
+            }
         }
         
         function selectStyle(meal, style, element) {
             const siblings = element.parentNode.querySelectorAll('.style-option');
             siblings.forEach(sibling => sibling.classList.remove('selected'));
             element.classList.add('selected');
+            
+            // Show menu customization
+            generateMenuCustomization(meal, style);
+        }
+        
+        function generateMenuCustomization(meal, style) {
+            const container = document.getElementById(`${meal}-menu`);
+            
+            if (!menuData[meal] || !menuData[meal][style]) {
+                container.innerHTML = '<p style="color: #666; font-style: italic;">Menu customization coming soon...</p>';
+                container.classList.add('visible');
+                return;
+            }
+            
+            const menuConfig = menuData[meal][style];
+            let html = '';
+            
+            // Generate courses
+            menuConfig.courses.forEach(course => {
+                html += `
+                    <div class="course-section">
+                        <div class="course-header">
+                            <div class="course-title">${course.name} (${course.priceRange})</div>
+                            <div class="choice-input">
+                                Client chooses <input type="number" value="${course.defaultChoices}" min="0" max="${course.items.length}"> options
+                            </div>
+                        </div>
+                        <div class="menu-items">
+                            ${course.items.map(item => `
+                                <div class="menu-item">
+                                    <input type="checkbox" ${item.checked !== false ? 'checked' : ''}>
+                                    <span class="item-name">${item.name}</span>
+                                    <span class="item-price">${item.price}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            // Generate add-ons if they exist
+            if (menuConfig.addOns) {
+                html += `
+                    <div class="add-ons-section">
+                        <div class="section-label">Add-On Options</div>
+                        <div class="menu-items">
+                            ${menuConfig.addOns.map(addon => `
+                                <div class="menu-item">
+                                    <input type="checkbox" checked>
+                                    <span class="item-name">${addon.name}</span>
+                                    <span class="item-price">${addon.price}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            container.innerHTML = html;
+            container.classList.add('visible');
         }
         
         // Step 4: Populate Review
