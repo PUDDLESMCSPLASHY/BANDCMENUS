@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Compton Menu Builder</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Source+Sans+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,10 +13,11 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            font-family: 'Source Sans Pro', sans-serif;
+            background: linear-gradient(135deg, #F8E3C9 0%, #C1C8C9 100%);
             min-height: 100vh;
             padding: 20px;
+            color: #0F162A;
         }
         
         .container {
@@ -23,26 +25,29 @@
             margin: 0 auto;
             background: white;
             border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(15, 22, 42, 0.15);
             overflow: hidden;
         }
         
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #00522A 0%, #628372 100%);
             color: white;
             padding: 30px;
             text-align: center;
         }
         
         .header h1 {
+            font-family: 'Montserrat', sans-serif;
             font-size: 2.5em;
             margin-bottom: 10px;
-            font-weight: 300;
+            font-weight: 600;
+            letter-spacing: 1px;
         }
         
         .header p {
             font-size: 1.1em;
             opacity: 0.9;
+            font-weight: 400;
         }
         
         .progress-bar {
@@ -55,7 +60,7 @@
         
         .progress-fill {
             height: 100%;
-            background: white;
+            background: #FFED96;
             width: 0%;
             transition: width 0.8s ease;
         }
@@ -81,7 +86,7 @@
         .lock-icon {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #00522A 0%, #628372 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -92,16 +97,18 @@
         }
         
         .password-title {
+            font-family: 'Montserrat', sans-serif;
             font-size: 1.8em;
-            color: #333;
+            color: #0F162A;
             margin-bottom: 10px;
             font-weight: 600;
         }
         
         .password-subtitle {
-            color: #666;
+            color: #628372;
             margin-bottom: 30px;
             font-size: 16px;
+            font-weight: 400;
         }
         
         .password-input-container {
@@ -114,29 +121,33 @@
             padding: 15px 20px;
             font-size: 18px;
             text-align: center;
-            border: 2px solid #e1e8ed;
+            border: 2px solid #C1C8C9;
             border-radius: 12px;
             letter-spacing: 2px;
             transition: all 0.3s ease;
+            font-family: 'Source Sans Pro', sans-serif;
+            background: #F8E3C9;
         }
         
         .password-input:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: #628372;
+            box-shadow: 0 0 0 3px rgba(98, 131, 114, 0.1);
+            background: white;
         }
         
         .password-input.error {
-            border-color: #ff6b6b;
-            box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+            border-color: #9C1B3B;
+            box-shadow: 0 0 0 3px rgba(156, 27, 59, 0.1);
             animation: shake 0.5s;
         }
         
         .password-error {
-            color: #ff6b6b;
+            color: #9C1B3B;
             font-size: 14px;
             margin-top: 10px;
             display: none;
+            font-weight: 500;
         }
         
         .password-error.show {
@@ -144,7 +155,7 @@
         }
         
         .password-submit {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #628372 0%, #00522A 100%);
             color: white;
             border: none;
             padding: 15px 40px;
@@ -154,11 +165,12 @@
             cursor: pointer;
             transition: transform 0.2s ease;
             margin-top: 20px;
+            font-family: 'Montserrat', sans-serif;
         }
         
         .password-submit:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 10px 20px rgba(98, 131, 114, 0.3);
         }
         
         @keyframes shake {
@@ -181,32 +193,34 @@
         label {
             display: block;
             font-weight: 600;
-            color: #333;
+            color: #0F162A;
             margin-bottom: 8px;
             font-size: 14px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            font-family: 'Montserrat', sans-serif;
         }
         
         input, select, textarea {
             width: 100%;
             padding: 12px 16px;
-            border: 2px solid #e1e8ed;
+            border: 2px solid #C1C8C9;
             border-radius: 8px;
             font-size: 16px;
             transition: all 0.3s ease;
             background: white;
+            font-family: 'Source Sans Pro', sans-serif;
         }
         
         input:focus, select:focus, textarea:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: #628372;
+            box-shadow: 0 0 0 3px rgba(98, 131, 114, 0.1);
         }
         
         .date-container {
-            background: #f8f9ff;
-            border: 2px dashed #d1d9e6;
+            background: #F8E3C9;
+            border: 2px dashed #BBB075;
             border-radius: 12px;
             padding: 20px;
             margin-top: 10px;
@@ -220,11 +234,11 @@
             padding: 12px;
             background: white;
             border-radius: 8px;
-            border: 1px solid #e1e8ed;
+            border: 1px solid #C1C8C9;
         }
         
         .date-number {
-            background: #667eea;
+            background: #628372;
             color: white;
             width: 30px;
             height: 30px;
@@ -234,6 +248,7 @@
             justify-content: center;
             font-weight: 600;
             font-size: 14px;
+            font-family: 'Montserrat', sans-serif;
         }
         
         .date-input {
@@ -242,17 +257,23 @@
         }
         
         .remove-date {
-            background: #ff6b6b;
+            background: #9C1B3B;
             color: white;
             border: none;
             padding: 8px 12px;
             border-radius: 6px;
             cursor: pointer;
             font-size: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+        }
+        
+        .remove-date:hover {
+            background: #692E2B;
         }
         
         .add-date {
-            background: #51cf66;
+            background: #628372;
             color: white;
             border: none;
             padding: 12px 20px;
@@ -264,13 +285,18 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .add-date:hover {
+            background: #00522A;
         }
         
         /* Step 2 Styles - Meal Selection */
         .day-tabs {
             display: flex;
-            background: #f8f9ff;
-            border-bottom: 1px solid #e1e8ed;
+            background: #F8E3C9;
+            border-bottom: 1px solid #C1C8C9;
             margin: -40px -40px 30px -40px;
         }
         
@@ -282,13 +308,14 @@
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            color: #666;
+            color: #628372;
             position: relative;
+            font-family: 'Montserrat', sans-serif;
         }
         
         .day-tab.active {
             background: white;
-            color: #667eea;
+            color: #00522A;
         }
         
         .day-tab.active::after {
@@ -298,13 +325,13 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: #667eea;
+            background: #628372;
         }
         
         .day-tab.completed::before {
             content: '✓';
             margin-right: 8px;
-            color: #51cf66;
+            color: #BBB075;
         }
         
         .meal-grid {
@@ -316,7 +343,7 @@
         
         .meal-card {
             background: white;
-            border: 3px solid #e1e8ed;
+            border: 3px solid #C1C8C9;
             border-radius: 16px;
             padding: 25px;
             cursor: pointer;
@@ -326,19 +353,20 @@
         
         .meal-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 30px rgba(15, 22, 42, 0.1);
+            border-color: #628372;
         }
         
         .meal-card.selected {
-            border-color: #667eea;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-color: #628372;
+            background: linear-gradient(135deg, #628372 0%, #00522A 100%);
             color: white;
         }
         
         .meal-icon {
             width: 60px;
             height: 60px;
-            background: #f8f9ff;
+            background: #F8E3C9;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -355,6 +383,7 @@
             font-size: 1.3em;
             font-weight: 700;
             margin-bottom: 8px;
+            font-family: 'Montserrat', sans-serif;
         }
         
         .meal-subtitle {
@@ -370,11 +399,11 @@
         }
         
         .selection-summary {
-            background: #f8f9ff;
+            background: #F8E3C9;
             padding: 20px;
             border-radius: 12px;
             margin-top: 30px;
-            border: 2px dashed #d1d9e6;
+            border: 2px dashed #BBB075;
         }
         
         .selected-meals {
@@ -384,31 +413,32 @@
         }
         
         .meal-tag {
-            background: #667eea;
+            background: #628372;
             color: white;
             padding: 6px 12px;
             border-radius: 20px;
             font-size: 14px;
             font-weight: 500;
+            font-family: 'Montserrat', sans-serif;
         }
         
         /* Step 3 Styles - Configuration */
         .meal-section {
-            background: #f8f9ff;
+            background: #F8E3C9;
             border-radius: 16px;
             margin-bottom: 30px;
             overflow: hidden;
-            border: 2px solid #e1e8ed;
+            border: 2px solid #C1C8C9;
             transition: all 0.3s ease;
         }
         
         .meal-section.active {
-            border-color: #667eea;
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.1);
+            border-color: #628372;
+            box-shadow: 0 10px 20px rgba(98, 131, 114, 0.1);
         }
         
         .meal-header {
-            background: #667eea;
+            background: #628372;
             color: white;
             padding: 20px 25px;
             cursor: pointer;
@@ -436,10 +466,12 @@
             font-size: 12px;
             cursor: pointer;
             transition: all 0.2s ease;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
         }
         
         .remove-meal:hover {
-            background: #ff6b6b;
+            background: #9C1B3B;
         }
         
         .expand-arrow {
@@ -464,7 +496,7 @@
         }
         
         .style-option {
-            border: 2px solid #e1e8ed;
+            border: 2px solid #C1C8C9;
             border-radius: 12px;
             padding: 20px;
             cursor: pointer;
@@ -473,18 +505,18 @@
         }
         
         .style-option:hover {
-            border-color: #667eea;
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
+            border-color: #628372;
+            box-shadow: 0 5px 15px rgba(98, 131, 114, 0.1);
         }
         
         .style-option.selected {
-            border-color: #667eea;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-color: #628372;
+            background: linear-gradient(135deg, #628372 0%, #00522A 100%);
             color: white;
         }
         
         .menu-customization {
-            background: #f8f9ff;
+            background: #F8E3C9;
             border-radius: 12px;
             padding: 25px;
             margin-top: 20px;
@@ -508,8 +540,9 @@
         
         .course-title {
             font-weight: 600;
-            color: #667eea;
+            color: #00522A;
             font-size: 16px;
+            font-family: 'Montserrat', sans-serif;
         }
         
         .choice-input {
@@ -522,7 +555,7 @@
         .choice-input input {
             width: 50px;
             padding: 5px 8px;
-            border: 1px solid #ddd;
+            border: 1px solid #BBB075;
             border-radius: 4px;
             text-align: center;
         }
@@ -542,10 +575,12 @@
             background: white;
             border-radius: 6px;
             font-size: 14px;
+            border: 1px solid #C1C8C9;
         }
         
         .menu-item input[type="checkbox"] {
             margin: 0;
+            accent-color: #628372;
         }
         
         .item-name {
@@ -554,28 +589,30 @@
         
         .item-price {
             font-size: 12px;
-            color: #666;
+            color: #9A6233;
             font-style: italic;
+            font-weight: 500;
         }
         
         .add-ons-section {
             margin-top: 20px;
             padding-top: 20px;
-            border-top: 1px solid #e1e8ed;
+            border-top: 1px solid #C1C8C9;
         }
         
         .section-label {
             font-weight: 600;
-            color: #333;
+            color: #0F162A;
             margin-bottom: 15px;
             font-size: 16px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            font-family: 'Montserrat', sans-serif;
         }
         
         /* Step 4 Styles - Review */
         .review-header {
-            background: linear-gradient(135deg, #51cf66 0%, #40c057 100%);
+            background: linear-gradient(135deg, #BBB075 0%, #628372 100%);
             color: white;
             padding: 25px;
             border-radius: 16px;
@@ -583,12 +620,19 @@
             text-align: center;
         }
         
+        .review-header h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8em;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
         .client-info {
-            background: #f8f9ff;
+            background: #F8E3C9;
             border-radius: 12px;
             padding: 25px;
             margin-bottom: 30px;
-            border: 2px solid #e1e8ed;
+            border: 2px solid #C1C8C9;
         }
         
         .info-grid {
@@ -599,39 +643,42 @@
         
         .info-label {
             font-weight: 600;
-            color: #667eea;
+            color: #628372;
             font-size: 14px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 5px;
+            font-family: 'Montserrat', sans-serif;
         }
         
         .info-value {
             font-size: 16px;
-            color: #333;
+            color: #0F162A;
+            font-weight: 500;
         }
         
         .passcode-section {
-            background: #fffbf0;
-            border: 2px solid #fed7aa;
+            background: #FFED96;
+            border: 2px solid #BBB075;
             border-radius: 12px;
             padding: 25px;
             margin-bottom: 30px;
         }
         
         .passcode-title {
-            color: #c05621;
+            color: #9A6233;
             font-weight: 600;
             font-size: 18px;
             margin-bottom: 15px;
             display: flex;
             align-items: center;
             gap: 8px;
+            font-family: 'Montserrat', sans-serif;
         }
         
         .passcode-input {
             padding: 12px 16px;
-            border: 2px solid #fed7aa;
+            border: 2px solid #BBB075;
             border-radius: 8px;
             font-size: 16px;
             font-weight: 600;
@@ -640,8 +687,8 @@
         }
         
         .link-preview {
-            background: #f0fff4;
-            border: 2px solid #c6f6d5;
+            background: #F8E3C9;
+            border: 2px solid #628372;
             border-radius: 12px;
             padding: 25px;
             margin-bottom: 30px;
@@ -651,11 +698,31 @@
             background: white;
             padding: 15px;
             border-radius: 8px;
-            border: 1px solid #c6f6d5;
-            font-family: monospace;
+            border: 1px solid #628372;
+            font-family: 'Source Sans Pro', monospace;
             word-break: break-all;
-            color: #1a365d;
+            color: #0F162A;
             margin-bottom: 15px;
+        }
+        
+        /* PDF Generation */
+        .pdf-section {
+            background: #F8E3C9;
+            border: 2px solid #628372;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .pdf-title {
+            color: #00522A;
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Montserrat', sans-serif;
         }
         
         /* Buttons */
@@ -665,23 +732,29 @@
             align-items: center;
             margin-top: 40px;
             padding-top: 30px;
-            border-top: 1px solid #e1e8ed;
+            border-top: 1px solid #C1C8C9;
         }
         
         .btn-secondary {
-            background: #6c757d;
-            color: white;
+            background: #C1C8C9;
+            color: #0F162A;
             border: none;
             padding: 12px 24px;
             border-radius: 8px;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            transition: background 0.2s ease;
+            transition: all 0.2s ease;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .btn-secondary:hover {
+            background: #9A6233;
+            color: white;
         }
         
         .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #628372 0%, #00522A 100%);
             color: white;
             border: none;
             padding: 12px 30px;
@@ -690,15 +763,16 @@
             font-weight: 600;
             cursor: pointer;
             transition: transform 0.2s ease;
+            font-family: 'Montserrat', sans-serif;
         }
         
         .btn-primary.final {
-            background: linear-gradient(135deg, #51cf66 0%, #40c057 100%);
+            background: linear-gradient(135deg, #BBB075 0%, #628372 100%);
         }
         
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 10px 20px rgba(98, 131, 114, 0.3);
         }
         
         .btn-primary:disabled {
@@ -707,8 +781,26 @@
             transform: none;
         }
         
+        .btn-pdf {
+            background: linear-gradient(135deg, #6CA6DA 0%, #628372 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .btn-pdf:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(108, 166, 218, 0.3);
+        }
+        
         .required {
-            color: #ff6b6b;
+            color: #9C1B3B;
         }
         
         /* Responsive */
@@ -853,12 +945,12 @@
                 <button class="day-tab active" id="dayTab1">Day 1 - Date TBD</button>
             </div>
             
-            <div style="background: #f8f9ff; padding: 20px; border-radius: 12px; margin-bottom: 30px;">
-                <h3 style="color: #667eea; margin-bottom: 5px;" id="dayConfigTitle">Day 1 Configuration</h3>
-                <p style="color: #666; font-size: 14px;">Select which meal times you'd like to offer for this day.</p>
+            <div style="background: #F8E3C9; padding: 20px; border-radius: 12px; margin-bottom: 30px; border: 1px solid #BBB075;">
+                <h3 style="color: #00522A; margin-bottom: 5px; font-family: 'Montserrat', sans-serif; font-weight: 600;" id="dayConfigTitle">Day 1 Configuration</h3>
+                <p style="color: #628372; font-size: 14px;">Select which meal times you'd like to offer for this day.</p>
             </div>
             
-            <h2 style="font-size: 1.8em; color: #333; margin-bottom: 20px; text-align: center;" id="mealSelectionTitle">Choose Meal Times for Day 1</h2>
+            <h2 style="font-size: 1.8em; color: #0F162A; margin-bottom: 20px; text-align: center; font-family: 'Montserrat', sans-serif; font-weight: 600;" id="mealSelectionTitle">Choose Meal Times for Day 1</h2>
             
             <div class="meal-grid">
                 <div class="meal-card" onclick="toggleMeal('breakfast')">
@@ -905,9 +997,9 @@
             </div>
             
             <div class="selection-summary">
-                <div style="font-weight: 600; color: #667eea; margin-bottom: 10px;">Selected for Day 1:</div>
+                <div style="font-weight: 600; color: #00522A; margin-bottom: 10px; font-family: 'Montserrat', sans-serif;">Selected for Day 1:</div>
                 <div class="selected-meals" id="selectedMeals">
-                    <span style="color: #999; font-style: italic;">No meal times selected yet</span>
+                    <span style="color: #628372; font-style: italic;">No meal times selected yet</span>
                 </div>
             </div>
             
@@ -923,16 +1015,16 @@
                 <button class="day-tab active">Day 1 - Date TBD</button>
             </div>
             
-            <div style="background: #f8f9ff; padding: 20px; border-radius: 12px; margin-bottom: 30px;">
-                <h3 style="color: #667eea; margin-bottom: 5px;">Service Style Configuration</h3>
-                <p style="color: #666; font-size: 14px;">Configure service styles and menu options for each selected meal time.</p>
+            <div style="background: #F8E3C9; padding: 20px; border-radius: 12px; margin-bottom: 30px; border: 1px solid #BBB075;">
+                <h3 style="color: #00522A; margin-bottom: 5px; font-family: 'Montserrat', sans-serif; font-weight: 600;">Service Style Configuration</h3>
+                <p style="color: #628372; font-size: 14px;">Configure service styles and menu options for each selected meal time.</p>
             </div>
             
             <div id="configSections"></div>
             
             <div class="button-container">
                 <button type="button" class="btn-secondary" onclick="goToStep2()">← Back to Meal Selection</button>
-                <button type="button" class="btn-primary" id="step3Continue" onclick="goToStep4()">Review & Generate Link</button>
+                <button type="button" class="btn-primary" id="step3Continue" onclick="goToStep4()">Review & Generate</button>
             </div>
         </div>
         
@@ -940,7 +1032,7 @@
         <div class="screen" id="step4Screen">
             <div class="review-header">
                 <h2>🎉 Configuration Complete!</h2>
-                <p>Review your menu configuration and generate the client link</p>
+                <p>Review your menu configuration and generate client documents</p>
             </div>
             
             <div class="client-info">
@@ -972,41 +1064,22 @@
                 </div>
             </div>
             
-            <div class="passcode-section">
-                <div class="passcode-title">
-                    <span>🔐</span> Client Menu Passcode
+            <div class="pdf-section">
+                <div class="pdf-title">
+                    <span>📄</span> Generate Client Menu Document
                 </div>
-                <p style="color: #666; font-size: 14px; margin-bottom: 20px;">
-                    Create a custom passcode for your client to access their menu selection page.
+                <p style="color: #628372; font-size: 14px; margin-bottom: 20px;">
+                    Create a professional PDF document with your client's personalized menu selections for them to review and return.
                 </p>
-                <div>
-                    <label style="margin-bottom: 8px; display: block;">Menu Passcode</label>
-                    <input 
-                        type="text" 
-                        class="passcode-input" 
-                        id="clientPasscode" 
-                        placeholder="e.g., EVENT2024"
-                        maxlength="20"
-                        style="width: 300px; max-width: 100%;"
-                    >
-                </div>
-            </div>
-            
-            <div class="link-preview">
-                <div style="color: #2f855a; font-weight: 600; font-size: 18px; margin-bottom: 15px;">🔗 Generated Client Link</div>
-                <div class="generated-link" id="generatedLink">
-                    https://menus.thecompton.com/client/loading...
-                </div>
                 <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                    <button style="background: #2f855a; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer;" onclick="copyLink()">📋 Copy Link</button>
-                    <button style="background: #3182ce; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer;" onclick="sendEmail()">📧 Send Email to Client</button>
-                    <button style="background: #2f855a; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer;" onclick="previewMenu()">👁️ Preview Client View</button>
+                    <button class="btn-pdf" onclick="generatePDF()">📋 Generate PDF Document</button>
+                    <button style="background: #9A6233; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-family: 'Montserrat', sans-serif;" onclick="previewPDF()">👁️ Preview Document</button>
                 </div>
             </div>
             
             <div class="button-container">
                 <button type="button" class="btn-secondary" onclick="goToStep3()">← Back to Configuration</button>
-                <button type="button" class="btn-primary final" onclick="generateAndSend()">🚀 Generate & Send to Client</button>
+                <button type="button" class="btn-primary final" onclick="generateAndComplete()">✅ Complete Configuration</button>
             </div>
         </div>
     </div>
@@ -1021,7 +1094,7 @@
         let dayConfigurations = {};
         
         const validCodes = ['4250', '4271', '4272', '4273', '4274', '4275', '4276', '4277', '4278'];
-        const stepTitles = ['Access Required', 'Step 1: Client & Event Information', 'Step 2: Select Meal Times', 'Step 3: Configure Service Styles', 'Step 4: Review & Generate Link'];
+        const stepTitles = ['Access Required', 'Step 1: Client & Event Information', 'Step 2: Select Meal Times', 'Step 3: Configure Service Styles', 'Step 4: Review & Generate'];
         const progressWidths = [0, 25, 50, 75, 100];
         
         // Complete menu data
@@ -1357,7 +1430,7 @@
             const container = document.getElementById('selectedMeals');
             
             if (selectedMeals.length === 0) {
-                container.innerHTML = '<span style="color: #999; font-style: italic;">No meal times selected yet</span>';
+                container.innerHTML = '<span style="color: #628372; font-style: italic;">No meal times selected yet</span>';
             } else {
                 const mealNames = {
                     'breakfast': 'Breakfast',
@@ -1399,9 +1472,9 @@
                 section.className = 'meal-section';
                 section.innerHTML = `
                     <div class="meal-header" onclick="toggleConfigSection('${meal}')">
-                        <div class="meal-icon" style="width: 40px; height: 40px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px;">${config.icon}</div>
+                        <div style="width: 40px; height: 40px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px;">${config.icon}</div>
                         <div class="meal-info">
-                            <div style="font-size: 1.4em; font-weight: 600; margin-bottom: 4px;">${config.title}</div>
+                            <div style="font-size: 1.4em; font-weight: 600; margin-bottom: 4px; font-family: 'Montserrat', sans-serif;">${config.title}</div>
                             <div style="opacity: 0.8; font-size: 14px;">Configure ${config.title.toLowerCase()} service options</div>
                         </div>
                         <div class="meal-actions">
@@ -1415,7 +1488,7 @@
                         <div class="style-grid">
                             ${config.styles.map(style => `
                                 <div class="style-option" onclick="selectStyle('${meal}', '${style}', this)">
-                                    <div style="font-weight: 600; font-size: 16px; margin-bottom: 8px;">${style}</div>
+                                    <div style="font-weight: 600; font-size: 16px; margin-bottom: 8px; font-family: 'Montserrat', sans-serif;">${style}</div>
                                     <div style="font-size: 14px; opacity: 0.8; line-height: 1.4;">Professional ${style.toLowerCase()} service</div>
                                 </div>
                             `).join('')}
@@ -1463,7 +1536,7 @@
             const container = document.getElementById(`${meal}-menu`);
             
             if (!menuData[meal] || !menuData[meal][style]) {
-                container.innerHTML = '<p style="color: #666; font-style: italic;">Menu customization coming soon...</p>';
+                container.innerHTML = '<p style="color: #628372; font-style: italic;">Menu customization coming soon...</p>';
                 container.classList.add('visible');
                 return;
             }
@@ -1526,55 +1599,304 @@
             document.getElementById('reviewDates').textContent = clientData.eventDates.map(date => 
                 new Date(date).toLocaleDateString()
             ).join(', ');
-            
-            // Generate unique link
-            const eventSlug = clientData.eventName.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-            const token = Math.random().toString(36).substring(2, 15);
-            document.getElementById('generatedLink').textContent = 
-                `https://menus.thecompton.com/client/${eventSlug}/select?token=${token}`;
-            
-            // Set default passcode
-            const year = new Date().getFullYear();
-            const defaultPasscode = clientData.eventName.split(' ')[0].toUpperCase() + year;
-            document.getElementById('clientPasscode').value = defaultPasscode;
         }
         
-        // Final Actions
-        function copyLink() {
-            const link = document.getElementById('generatedLink').textContent;
-            navigator.clipboard.writeText(link).then(() => {
-                alert('Link copied to clipboard! 📋');
+        // PDF Generation Functions
+        function generatePDF() {
+            // Create a new window with printable content
+            const pdfWindow = window.open('', '_blank');
+            const pdfContent = createPDFContent();
+            
+            pdfWindow.document.write(pdfContent);
+            pdfWindow.document.close();
+            
+            // Auto-trigger print dialog
+            setTimeout(() => {
+                pdfWindow.print();
+            }, 500);
+        }
+        
+        function previewPDF() {
+            // Create preview in new window
+            const previewWindow = window.open('', '_blank');
+            const pdfContent = createPDFContent();
+            
+            previewWindow.document.write(pdfContent);
+            previewWindow.document.close();
+        }
+        
+        function createPDFContent() {
+            return `
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu Selection - ${clientData.eventName}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Source+Sans+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @page { 
+            margin: 0.75in; 
+            size: letter;
+        }
+        body { 
+            font-family: 'Source Sans Pro', sans-serif; 
+            color: #0F162A;
+            line-height: 1.4;
+            margin: 0;
+        }
+        .header { 
+            text-align: center; 
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #628372;
+        }
+        h1 { 
+            font-family: 'Montserrat', sans-serif;
+            color: #00522A; 
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        h2 { 
+            font-family: 'Montserrat', sans-serif;
+            color: #628372; 
+            font-size: 20px;
+            margin: 20px 0 10px;
+            font-weight: 600;
+        }
+        .client-info { 
+            background: #F8E3C9; 
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+        .instructions {
+            background: #FFED96;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 4px solid #BBB075;
+        }
+        .day-section {
+            margin-bottom: 30px;
+            page-break-inside: avoid;
+        }
+        .day-header {
+            background: #628372;
+            color: white;
+            padding: 12px 15px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .meal-section {
+            margin: 15px 0;
+            padding-left: 15px;
+        }
+        .meal-title {
+            font-weight: 600;
+            color: #00522A;
+            font-size: 16px;
+            margin-bottom: 8px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .course-group {
+            margin-bottom: 15px;
+        }
+        .course-title {
+            font-weight: 600;
+            color: #628372;
+            margin-bottom: 8px;
+        }
+        .menu-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 5px 15px;
+            margin-bottom: 10px;
+        }
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+        input[type="checkbox"] {
+            transform: scale(1.2);
+            accent-color: #628372;
+        }
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #C1C8C9;
+            text-align: center;
+            color: #628372;
+        }
+        @media print {
+            body { print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>The Compton</h1>
+        <div style="font-size: 18px; color: #628372; font-weight: 500;">Personalized Menu Selection</div>
+    </div>
+    
+    <div class="client-info">
+        <strong>Client:</strong> ${clientData.firstName} ${clientData.lastName}<br>
+        <strong>Event:</strong> ${clientData.eventName}<br>
+        <strong>Guest Count:</strong> ${clientData.guestCount}<br>
+        <strong>Event Date(s):</strong> ${clientData.eventDates.map(date => new Date(date).toLocaleDateString()).join(', ')}
+    </div>
+    
+    <div class="instructions">
+        <strong>Instructions:</strong><br>
+        Please review the menu options below and check your preferred selections. 
+        Return this completed form by <strong>${new Date(clientData.responseDeadline).toLocaleDateString()}</strong>
+        via email to continue with your event planning.
+    </div>
+    
+    ${generateMenuSectionsForPDF()}
+    
+    <div class="footer">
+        <div style="font-weight: 600; margin-bottom: 5px;">The Compton Catering</div>
+        <div>Thank you for choosing us for your special event!</div>
+    </div>
+</body>
+</html>
+            `;
+        }
+        
+        function generateMenuSectionsForPDF() {
+            let html = '';
+            
+            clientData.eventDates.forEach((dateStr, dayIndex) => {
+                const date = new Date(dateStr);
+                const formattedDate = date.toLocaleDateString('en-US', { 
+                    weekday: 'long', 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                });
+                
+                html += `
+                    <div class="day-section">
+                        <div class="day-header">Day ${dayIndex + 1} - ${formattedDate}</div>
+                `;
+                
+                // Get meals for this day (for demo, using current selection)
+                const dayMeals = dayIndex === 0 ? selectedMeals : ['breakfast', 'lunch']; // Demo data
+                
+                dayMeals.forEach(meal => {
+                    const mealData = getMealDataForPDF(meal);
+                    html += `
+                        <div class="meal-section">
+                            <div class="meal-title">${mealData.icon} ${mealData.title}</div>
+                            <div style="font-size: 14px; color: #628372; margin-bottom: 10px;">${mealData.serviceStyle}</div>
+                            ${mealData.courses.map(course => `
+                                <div class="course-group">
+                                    <div class="course-title">${course.name} (choose ${course.choices})</div>
+                                    <div class="menu-options">
+                                        ${course.items.map(item => `
+                                            <div class="menu-item">
+                                                <input type="checkbox"> ${item.name} <span style="color: #9A6233; font-style: italic;">${item.price}</span>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                });
+                
+                html += `</div>`;
             });
-        }
-        
-        function sendEmail() {
-            const passcode = document.getElementById('clientPasscode').value;
-            if (!passcode.trim()) {
-                alert('Please set a menu passcode first!');
-                return;
-            }
-            alert(`Opening email composer with passcode "${passcode}" included...`);
-        }
-        
-        function previewMenu() {
-            const passcode = document.getElementById('clientPasscode').value;
-            if (!passcode.trim()) {
-                alert('Please set a menu passcode first!');
-                return;
-            }
-            alert(`Opening client preview with passcode "${passcode}"`);
-        }
-        
-        function generateAndSend() {
-            const passcode = document.getElementById('clientPasscode').value;
-            if (!passcode.trim()) {
-                alert('Please set a menu passcode first!');
-                return;
-            }
             
-            if (confirm(`Generate and send menu link to ${clientData.firstName} ${clientData.lastName}?\n\nPasscode: ${passcode}`)) {
-                alert(`🎉 Success! Menu link sent to ${clientData.email} with passcode "${passcode}"`);
-            }
+            return html;
+        }
+        
+        function getMealDataForPDF(meal) {
+            const configs = {
+                breakfast: {
+                    icon: '🍳',
+                    title: 'Breakfast',
+                    serviceStyle: 'Breakfast Buffet Service',
+                    courses: [
+                        {
+                            name: 'Buffet Selection',
+                            choices: 1,
+                            items: [
+                                { name: 'Continental Breakfast', price: '$12 pp' },
+                                { name: 'Ozark Breakfast', price: '$16 pp' },
+                                { name: 'The Compton Breakfast', price: '$20 pp' }
+                            ]
+                        }
+                    ]
+                },
+                lunch: {
+                    icon: '🥗',
+                    title: 'Lunch',
+                    serviceStyle: 'Plated Lunch Service',
+                    courses: [
+                        {
+                            name: 'Side Salads',
+                            choices: 1,
+                            items: [
+                                { name: 'Seasonal Salad', price: '$7' },
+                                { name: 'Classic Caesar', price: '$8' },
+                                { name: 'Spinach Salad', price: '$8' },
+                                { name: 'Baby Kale (VG)', price: '$9' }
+                            ]
+                        },
+                        {
+                            name: 'Main Course',
+                            choices: 2,
+                            items: [
+                                { name: 'Roasted Chicken Breast', price: '$28' },
+                                { name: 'Wood-Grilled Salmon', price: '$34' },
+                                { name: '6OZ Beef Tenderloin', price: '$36' }
+                            ]
+                        }
+                    ]
+                },
+                dinner: {
+                    icon: '🍽️',
+                    title: 'Dinner',
+                    serviceStyle: 'Reception Style Service',
+                    courses: [
+                        {
+                            name: 'Stationary Displays',
+                            choices: 2,
+                            items: [
+                                { name: 'Artisan Charcuterie', price: '$18 pp' },
+                                { name: 'Seasonal Crudité', price: '$12 pp' },
+                                { name: 'Cheese & Fruit Display', price: '$16 pp' }
+                            ]
+                        }
+                    ]
+                },
+                drinks: {
+                    icon: '🍷',
+                    title: 'Beverages',
+                    serviceStyle: 'Bar Service',
+                    courses: [
+                        {
+                            name: 'Package Selection',
+                            choices: 1,
+                            items: [
+                                { name: 'Jasper Package (2hr)', price: '$34 pp' },
+                                { name: 'Beer & Wine Only (2hr)', price: '$22 pp' },
+                                { name: 'Non-Alcoholic Package', price: '$12 pp' }
+                            ]
+                        }
+                    ]
+                }
+            };
+            
+            return configs[meal] || { icon: '🍽️', title: 'Meal', serviceStyle: 'Service', courses: [] };
+        }
+        
+        function generateAndComplete() {
+            alert(`🎉 Configuration Complete!\n\nMenu builder configured for ${clientData.firstName} ${clientData.lastName}.\nUse the PDF generation feature to create client documents.`);
         }
         
         // Initialize
